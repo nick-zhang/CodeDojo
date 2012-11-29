@@ -11,13 +11,16 @@ namespace CodeDojoTest
         [TestMethod]
         public void ThisIsAnExample()
         {
-
+            //Print the score higher than 80
+            //Output: 85 90 88
+            var scores = new int[]{70, 85, 90, 88};
+            
         }
 
         [TestMethod]
         public void T1_CalculatAverage()
         {
-            // Get the average of  1^2 + ... + 10 ^2
+            //Get the average of  1^2 + ... + 10 ^2
         }
 
         [TestMethod]
@@ -99,14 +102,14 @@ namespace CodeDojoTest
         [TestMethod]
         public void T11_SortALongString()
         {
-            //Output: does it matter not
+            //Output: does It matter not
             const string text = "It does not matter";
         }
 
         [TestMethod]
         public void T12_CountWordOccurence()
         {
-            // Count the occurence of words and output them in descending, ignore case
+            //Count the occurence of words and output them in descending, ignore case
             const string text = "Historically, the world of data and the world of objects" +
                                 " have not been well integrated. Programmers work in C# or Visual Basic" +
                                 " and also in SQL or XQuery. On the one side are concepts such as classes," +
@@ -122,8 +125,8 @@ namespace CodeDojoTest
         [TestMethod]
         public void T13_ScrambleTextByWord()
         {
-            // Possisble Output:            
-            // const string text1 = "Adcorcing to a rrseaech at Cambgidre Univeristy it does not mttaer in waht oredr the letters in a wrod are";
+            //Possisble Output:            
+            //const string text1 = "Adcorcing to a rrseaech at Cambgidre Univeristy it does not mttaer in waht oredr the letters in a wrod are";
             const string text =
                 "According to a research at Cambridge University it does not matter in what order the letters in a word are";
         }
