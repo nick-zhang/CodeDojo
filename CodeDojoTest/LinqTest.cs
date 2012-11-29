@@ -14,13 +14,19 @@ namespace CodeDojoTest
             //Print the score higher than 80
             //Output: 85 90 88
             var scores = new int[]{70, 85, 90, 88};
-            
+            var higherThan80 = scores.Where(score => score > 80);
+            foreach (var i in higherThan80)
+            {
+                Console.Out.WriteLine(i);
+            }
         }
 
         [TestMethod]
         public void T1_CalculatAverage()
         {
             //Get the average of  1^2 + ... + 10 ^2
+            var average = Enumerable.Range(1, 10).Select(x => x * x).Average();
+            Console.Out.WriteLine(average);
         }
 
         [TestMethod]
@@ -29,6 +35,18 @@ namespace CodeDojoTest
             //Output: david carry
             string[] names1 = {"nick", "david", "carry"};
             string[] names2 = {"carry", "david"};
+
+            var selectedNames = names1.Where(names2.Contains);
+            foreach (var name in selectedNames)
+            {
+                Console.Out.WriteLine(name);
+            }
+            
+            var bothHave = names1.Intersect(names2);
+            foreach (var name in bothHave)
+            {
+                Console.Out.WriteLine(name);
+            }
         }
 
         [TestMethod]
@@ -37,6 +55,12 @@ namespace CodeDojoTest
             //Output: nick
             string[] names1 = {"nick", "david", "carry"};
             string[] names2 = {"carry", "david"};
+
+            var leftOnes = names1.Except(names2);
+            foreach (var leftOne in leftOnes)
+            {
+                Console.Out.WriteLine(leftOne);
+            }
         }
 
         [TestMethod]
@@ -44,6 +68,12 @@ namespace CodeDojoTest
         {
             //Output:NICK DAVID CARRY
             string[] names = {"nick", "david", "carry"};
+
+            var uppercaseNames = names.Select(name => name.ToUpper());
+            foreach (var name in uppercaseNames)
+            {
+                Console.Out.WriteLine(name);
+            }
         }
 
         [TestMethod]
@@ -51,6 +81,9 @@ namespace CodeDojoTest
         {
             //Output:"nick david carry"
             string[] names = {"nick", "david", "carry"};
+
+            var result = names.Aggregate((current, name) => current + (" " + name));
+            Console.Out.WriteLine(result);
         }
 
         [TestMethod]
@@ -58,6 +91,13 @@ namespace CodeDojoTest
         {
             //Output:carry david nick 
             string[] names = {"nick", "david", "carry"};
+
+            var orderedNames = names.OrderBy(s => s);
+
+            foreach (var name in orderedNames)
+            {
+                Console.Out.WriteLine(name);
+            }
         }
 
         [TestMethod]
@@ -65,6 +105,12 @@ namespace CodeDojoTest
         {
             //Output: nick david carray
             string[] names1 = {"nick", "david", "carry"};
+            var byDescendingNames = names1.OrderByDescending(s => s);
+
+            foreach (var name in byDescendingNames)
+            {
+                Console.Out.WriteLine(name);
+            }
         }
 
         [TestMethod]
@@ -83,6 +129,13 @@ namespace CodeDojoTest
                                    new Bouquet {Flowers = new List<string> {"tulip", "rose", "orchid"}},
                                    new Bouquet {Flowers = new List<string> {"daffodil", "larkspur"}}
                                };
+
+            var flowers = bouquets.Where(bq => bq.Flowers.Any(flower => flower.StartsWith("d"))).SelectMany(bq => bq.Flowers);
+
+            foreach (var flower in flowers)
+            {
+                Console.Out.WriteLine(flower);
+            }
         }
 
         [TestMethod]
