@@ -9,13 +9,19 @@ namespace CodeDojoTest
     public class LinqTest
     {
         [TestMethod]
-        public void T1_CalculatAverage()
+        public void ThisIsAnExample()
         {
-            // Get average of  1^2 + ... + 10 ^2
+
         }
 
         [TestMethod]
-        public void T2_FilterItemsContainedByOtherArray()
+        public void T1_CalculatAverage()
+        {
+            // Get the average of  1^2 + ... + 10 ^2
+        }
+
+        [TestMethod]
+        public void T2_FilterItemsContainedByOtherArrayAndKeepTheOriginalOrder()
         {
             //Output: david carry
             string[] names1 = {"nick", "david", "carry"};
@@ -38,7 +44,7 @@ namespace CodeDojoTest
         }
 
         [TestMethod]
-        public void T5_ConcatAllTheItemsWithDelimiter()
+        public void T5_ConcatAllTheItemsWithSpaceAsTheDelimiter()
         {
             //Output:"nick david carry"
             string[] names = {"nick", "david", "carry"};
@@ -59,19 +65,20 @@ namespace CodeDojoTest
         }
 
         [TestMethod]
-        public void T8_PrintAllFlowerNamesByOnlyOneForeach()
+        public void T8_PrintAllFlowerNamesIfAnyBouquetHasFlowerNameStartWithDByOnlyOneForeach()
         {
+            /*Output: 
+            sunflower
+            daisy
+            daffodil
+            larkspur
+             */
             var bouquets = new List<Bouquet>
                                {
                                    new Bouquet
-                                       {Flowers = new List<string> {"sunflower", "daisy", "daffodil", "larkspur"}},
+                                       {Flowers = new List<string> {"sunflower", "daisy"}},
                                    new Bouquet {Flowers = new List<string> {"tulip", "rose", "orchid"}},
-                                   new Bouquet
-                                       {
-                                           Flowers =
-                                               new List<string> {"gladiolis", "lily", "snapdragon", "aster", "protea"}
-                                       },
-                                   new Bouquet {Flowers = new List<string> {"larkspur", "lilac", "iris", "dahlia"}}
+                                   new Bouquet {Flowers = new List<string> {"daffodil", "larkspur"}}
                                };
         }
 
