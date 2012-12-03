@@ -143,6 +143,9 @@ namespace CodeDojoTest
         {
             //Possbile output: apphy
             const string word = "happy";
+            var random = new Random();
+            var randomLetterWord = new string(word.ToCharArray().OrderBy(s => random.Next()).ToArray());
+            Console.Out.WriteLine(randomLetterWord);
         }
 
         [TestMethod]
@@ -150,6 +153,12 @@ namespace CodeDojoTest
         {
             //Possbile output: hppay
             const string word = "happy";
+            var random = new Random();
+            var randomLetterInMiddle = word[0] +
+                                       new string(
+                                           word.Substring(1, word.Length - 2).ToCharArray().OrderBy(
+                                               s => random.Next()).ToArray()) + word[word.Length - 1];
+            Console.Out.WriteLine(randomLetterInMiddle);
         }
 
         [TestMethod]
@@ -157,6 +166,8 @@ namespace CodeDojoTest
         {
             //Output: does It matter not
             const string text = "It does not matter";
+            var orderedText = string.Join(" ", text.Split(' ').OrderBy(s => s));
+            Console.Out.WriteLine(orderedText);
         }
 
         [TestMethod]
@@ -173,6 +184,15 @@ namespace CodeDojoTest
                                 " query can only be represented as a string without compile-time type checking or" +
                                 " IntelliSense support in the IDE. Transferring data from SQL tables or XML trees to" +
                                 " objects in memory is often tedious and error-prone.";
+
+            var words = text.Split(new[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var occurences =
+                words.GroupBy(w => w.ToLower()).OrderByDescending(g => g.Count());
+
+            foreach (var i in occurences)
+            {
+                Console.Out.WriteLine("{0} {1}", i.Key, i.Count());
+            }
         }
 
         [TestMethod]
@@ -182,6 +202,19 @@ namespace CodeDojoTest
             //const string text1 = "Adcorcing to a rrseaech at Cambgidre Univeristy it does not mttaer in waht oredr the letters in a wrod are";
             const string text =
                 "According to a research at Cambridge University it does not matter in what order the letters in a word are";
+
+            var random = new Random();
+            var scrambledText = string.Join(" ",
+                                            text.Split(' ').Select(
+                                                word =>
+                                                word.Length < 3
+                                                    ? word
+                                                    : word[0] +
+                                                      new string(
+                                                          word.Substring(1, word.Length - 2).OrderBy(
+                                                              s => random.Next()).ToArray()) + word[word.Length - 1]));
+
+            Console.Out.WriteLine(scrambledText);
         }
 
 
@@ -196,6 +229,14 @@ namespace CodeDojoTest
             var dog4 = new Dog {IsMale = false, Name = "dog4"};
             var dog5 = new Dog {IsMale = true, Name = "dog5"};
             var dogs = new List<Dog> {dog1, dog2, dog3, dog4, dog5};
+
+            var reorderedDogs =
+               dogs.Where(dog => dog.IsMale).Concat(new List<Dog> { dogSpecial }).Concat(dogs.Where(dog => !dog.IsMale));
+
+            foreach (var dog in reorderedDogs)
+            {
+                Console.Out.WriteLine(dog.Name);
+            }
         }
     }
 
