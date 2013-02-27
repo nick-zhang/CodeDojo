@@ -48,6 +48,7 @@
     <Compile Include="EnumeratorTest2.cs" />
     <Compile Include="EnumeratorTest1.cs" />
     <Compile Include="LinqTestProblems.cs" />
+    <Compile Include="LinqAllAnswersTest.cs" />
     <Compile Include="LinqTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

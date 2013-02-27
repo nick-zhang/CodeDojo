@@ -6,27 +6,25 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CodeDojoTest
 {
     [TestClass]
-    public class LinqTest
+    public class LinqAllAnswersTest
     {
         [TestMethod]
         public void ThisIsAnExample()
         {
             //Print the score higher than 80
             //Output: 85 90 88
-            var scores = new int[]{70, 85, 90, 88};
+            var scores = new int[] {70, 85, 90, 88};
             var higherThan80 = scores.Where(score => score > 80);
-            foreach (var i in higherThan80)
-            {
-                Console.Out.WriteLine(i);
-            }
+
+            higherThan80.ToList().ForEach(Console.WriteLine);
         }
 
         [TestMethod]
         public void T1_CalculatAverage()
         {
-            //Get the average of  1^2, ... , 10 ^2
-            var average = Enumerable.Range(1, 10).Select(x => x * x).Average();
-            Console.Out.WriteLine(average);
+            //Get the average of  1^2 , ... , 10 ^2
+            var average = Enumerable.Range(1, 10).Select(x => x*x).Average();
+            Console.WriteLine(average);
         }
 
         [TestMethod]
@@ -37,16 +35,10 @@ namespace CodeDojoTest
             string[] names2 = {"carry", "david"};
 
             var selectedNames = names1.Where(names2.Contains);
-            foreach (var name in selectedNames)
-            {
-                Console.Out.WriteLine(name);
-            }
-            
+            selectedNames.ToList().ForEach(Console.WriteLine);
+
             var bothHave = names1.Intersect(names2);
-            foreach (var name in bothHave)
-            {
-                Console.Out.WriteLine(name);
-            }
+            bothHave.ToList().ForEach(Console.WriteLine);
         }
 
         [TestMethod]
@@ -57,10 +49,7 @@ namespace CodeDojoTest
             string[] names2 = {"carry", "david"};
 
             var leftOnes = names1.Except(names2);
-            foreach (var leftOne in leftOnes)
-            {
-                Console.Out.WriteLine(leftOne);
-            }
+            leftOnes.ToList().ForEach(Console.WriteLine);
         }
 
         [TestMethod]
@@ -70,10 +59,7 @@ namespace CodeDojoTest
             string[] names = {"nick", "david", "carry"};
 
             var uppercaseNames = names.Select(name => name.ToUpper());
-            foreach (var name in uppercaseNames)
-            {
-                Console.Out.WriteLine(name);
-            }
+            uppercaseNames.ToList().ForEach(Console.WriteLine);
         }
 
         [TestMethod]
@@ -83,7 +69,7 @@ namespace CodeDojoTest
             string[] names = {"nick", "david", "carry"};
 
             var result = names.Aggregate((current, name) => current + (" " + name));
-            Console.Out.WriteLine(result);
+            Console.WriteLine(result);
         }
 
         [TestMethod]
@@ -93,11 +79,7 @@ namespace CodeDojoTest
             string[] names = {"nick", "david", "carry"};
 
             var orderedNames = names.OrderBy(s => s);
-
-            foreach (var name in orderedNames)
-            {
-                Console.Out.WriteLine(name);
-            }
+            orderedNames.ToList().ForEach(Console.WriteLine);
         }
 
         [TestMethod]
@@ -106,11 +88,7 @@ namespace CodeDojoTest
             //Output: nick david carray
             string[] names1 = {"nick", "david", "carry"};
             var byDescendingNames = names1.OrderByDescending(s => s);
-
-            foreach (var name in byDescendingNames)
-            {
-                Console.Out.WriteLine(name);
-            }
+            byDescendingNames.ToList().ForEach(Console.WriteLine);
         }
 
         [TestMethod]
@@ -130,12 +108,10 @@ namespace CodeDojoTest
                                    new Bouquet {Flowers = new List<string> {"daffodil", "larkspur"}}
                                };
 
-            var flowers = bouquets.Where(bq => bq.Flowers.Any(flower => flower.StartsWith("d"))).SelectMany(bq => bq.Flowers);
+            var flowers =
+                bouquets.Where(bq => bq.Flowers.Any(flower => flower.StartsWith("d"))).SelectMany(bq => bq.Flowers);
 
-            foreach (var flower in flowers)
-            {
-                Console.Out.WriteLine(flower);
-            }
+            flowers.ToList().ForEach(Console.WriteLine);
         }
 
         [TestMethod]
@@ -145,7 +121,7 @@ namespace CodeDojoTest
             const string word = "happy";
             var random = new Random();
             var randomLetterWord = new string(word.ToCharArray().OrderBy(s => random.Next()).ToArray());
-            Console.Out.WriteLine(randomLetterWord);
+            Console.WriteLine(randomLetterWord);
         }
 
         [TestMethod]
@@ -158,7 +134,7 @@ namespace CodeDojoTest
                                        new string(
                                            word.Substring(1, word.Length - 2).ToCharArray().OrderBy(
                                                s => random.Next()).ToArray()) + word[word.Length - 1];
-            Console.Out.WriteLine(randomLetterInMiddle);
+            Console.WriteLine(randomLetterInMiddle);
         }
 
         [TestMethod]
@@ -167,7 +143,7 @@ namespace CodeDojoTest
             //Output: does It matter not
             const string text = "It does not matter";
             var orderedText = string.Join(" ", text.Split(' ').OrderBy(s => s));
-            Console.Out.WriteLine(orderedText);
+            Console.WriteLine(orderedText);
         }
 
         [TestMethod]
@@ -185,14 +161,10 @@ namespace CodeDojoTest
                                 " IntelliSense support in the IDE. Transferring data from SQL tables or XML trees to" +
                                 " objects in memory is often tedious and error-prone.";
 
-            var words = text.Split(new[] { '.', '?', '!', ' ', ';', ':', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var words = text.Split(new[] {'.', '?', '!', ' ', ';', ':', ','}, StringSplitOptions.RemoveEmptyEntries);
             var occurences =
                 words.GroupBy(w => w.ToLower()).OrderByDescending(g => g.Count());
-
-            foreach (var i in occurences)
-            {
-                Console.Out.WriteLine("{0} {1}", i.Key, i.Count());
-            }
+            occurences.ToList().ForEach(Console.WriteLine);
         }
 
         [TestMethod]
@@ -214,7 +186,7 @@ namespace CodeDojoTest
                                                           word.Substring(1, word.Length - 2).OrderBy(
                                                               s => random.Next()).ToArray()) + word[word.Length - 1]));
 
-            Console.Out.WriteLine(scrambledText);
+            Console.WriteLine(scrambledText);
         }
 
 
@@ -231,23 +203,8 @@ namespace CodeDojoTest
             var dogs = new List<Dog> {dog1, dog2, dog3, dog4, dog5};
 
             var reorderedDogs =
-               dogs.Where(dog => dog.IsMale).Concat(new List<Dog> { dogSpecial }).Concat(dogs.Where(dog => !dog.IsMale));
-
-            foreach (var dog in reorderedDogs)
-            {
-                Console.Out.WriteLine(dog.Name);
-            }
+                dogs.Where(dog => dog.IsMale).Concat(new List<Dog> {dogSpecial}).Concat(dogs.Where(dog => !dog.IsMale));
+            reorderedDogs.ToList().ForEach(Console.WriteLine);
         }
-    }
-
-    public class Dog
-    {
-        public bool IsMale;
-        public string Name;
-    }
-
-    internal class Bouquet
-    {
-        public List<string> Flowers { get; set; }
     }
 }
