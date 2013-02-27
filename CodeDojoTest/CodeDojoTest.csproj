@@ -45,7 +45,9 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DelegateTest.cs" />
+    <Compile Include="EnumeratorTest2.cs" />
+    <Compile Include="EnumeratorTest1.cs" />
+    <Compile Include="LinqTestProblems.cs" />
     <Compile Include="LinqTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
